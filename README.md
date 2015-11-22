@@ -1,4 +1,7 @@
 # word-cloud
+
+[![Build Status](https://travis-ci.org/chudaol/word-cloud.png)](https://travis-ci.org/chudaol/word-cloud)
+
 Creates a word cloud from a given json file like this:
 
 ![Word Cloud](word-cloud.png)

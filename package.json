@@ -1,0 +1,48 @@
+{
+  "name": "word-cloud",
+  "version": "0.0.0",
+  "description": "Creates a word cloud from a json file",
+  "main": "src/index.js",
+  "watch": {
+    "test": "{src,test}/*.js",
+    "dist": "src/*.js",
+    "css": "scss/*.scss",
+    "dev": "src/*.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "jshint src/*.js test/*.js && jscs src/*.js test/*.js",
+    "dev": "mkdir -p dev && browserify src/*.js -o dev/app.js && npm run css",
+    "dist": "mkdir -p dist && browserify src/*.js -o dist/app.js && uglifyjs dist/app.js > dist/app-min.js && npm run css",
+    "css": "node-sass --include-path scss scss/style.scss dist/css/style.css && cp node_modules/bootstrap/dist/css/bootstrap.min.css dist/css/bootstrap.min.css",
+    "watch": "npm-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chudaol/word-cloud.git"
+  },
+  "keywords": [
+    "words",
+    "cloud"
+  ],
+  "author": "Olga Filipova",
+  "bugs": {
+    "url": "https://github.com/chudaol/word-cloud/"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "http-server": "^0.8.5",
+    "vue": "^1.0.8",
+    "vue-resource": "^0.1.17"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "jshint": "^2.9.1-rc1",
+    "mocha": "^2.3.4",
+    "node-sass": "^3.4.2",
+    "sinon": "^1.17.2",
+    "uglify-js": "^2.6.1",
+    "underscore": "^1.8.3"
+  }
+}

@@ -1,0 +1,70 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Word Cloud</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/style.css">
+</head>
+<body>
+
+<!-- topic template -->
+<script type="text/x-template" id="topic-template">
+  <li class="topic">
+    <a v-on:click="onClick" v-bind:class="[ className, fontSize, selected ? 'selected' : '' ]" href="#">
+      {{ model.label }}
+    </a>
+  </li>
+</script>
+
+<!-- description item template -->
+<script type="text/x-template" id="description-item-template">
+  <div class="description-item">
+    <div class="col-sm-8">
+      <label>{{ label }}</label>
+    </div>
+    <div class="col-sm-4">
+      <span class="description {{ className }}">{{ text || "-"}}</span>
+    </div>
+  </div>
+</script>
+
+<!-- main body of our application -->
+<div class="container" id="words">
+  <!-- show the word cloud -->
+  <div class="col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Word Cloud</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="topics">
+          <topic v-for="topic in topics" :model="topic"></topic>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- show the description -->
+  <div class="col-sm-4">
+    <div class="description">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3>{{ selected.label }}</h3>
+        </div>
+        <div class="panel-body">
+          <description-item label="Total Mentions" class-name="" :text=selected.volume></description-item>
+          <description-item label="Positive Mentions" class-name="green" :text=selected.sentiment.positive></description-item>
+          <description-item label="Neutral Mentions" class-name="gray" :text=selected.sentiment.neutral></description-item>
+          <description-item label="Negative Mentions" class-name="red" :text=selected.sentiment.negative></description-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- JS -->
+<!--<script src="dev/app.js"></script>-->
+<script src="dist/app-min.js"></script>
+</body>
+</html>

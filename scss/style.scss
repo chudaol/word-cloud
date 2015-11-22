@@ -1,0 +1,88 @@
+$class-slug: font-size !default
+.container {
+  margin-top: 50px;
+}
+/*list of topics */
+@keyframes hover-word {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+ul.topics {
+  margin: 1em 0;
+  padding: .5em 10px;
+  text-align: center;
+}
+li.topic {
+  margin: 1px;
+  padding: 0;
+  list-style: none;
+  display: inline;
+  padding: 0 2px;
+}
+li.topic a {
+  padding: 5px;
+  transform: translateZ(0);
+}
+li.topic a:hover, li.topic a:focus, li.topic a:active {
+  text-decoration: none;
+  outline: none;
+}
+li.topic a:hover:not(.selected) {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #fbf3f3;
+  -webkit-animation-name: hover-word;
+  -moz-animation-name: hover-word;
+  animation-name: hover-word;
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -moz-animation-direction: alternate;
+  animation-direction: alternate;
+}
+.selected {
+  background-color: #dddddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+/* description */
+.description label {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+span.description {
+  font-size: 2em;
+}
+span.description::before {
+  content: " ";
+}
+div.description-item {
+  line-height: 2.1em;
+}
+/* colors */
+.green, a.green:hover, a.green:active {
+  color: #398023;
+}
+.red, a.red:hover, a.red:active {
+  color: #ff2c27;
+}
+.gray, a.gray:hover, a.gray:active {
+  color: gray;
+}
+/*classes for different font-sizes from 10 to 210*/
+@for $i from 9 through 200 {
+  .#{$class-slug}-#{$i} {
+    font-size: 9px + $i
+  }
+}

@@ -1,0 +1,1 @@
+npm install && npm run dist && node_modules/http-server/bin/http-server .

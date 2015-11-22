@@ -1,3 +1,6 @@
+"use strict";
+
+/*global require*/
 var WordCloud, _, wordCloud, config, topics, parsedTopics, selected, Vue, app;
 
 _ = require("underscore");

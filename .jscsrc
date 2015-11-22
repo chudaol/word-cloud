@@ -51,7 +51,7 @@
   "disallowKeywords": [ "with" ],
   "disallowMultipleLineBreaks": true,
   "validateLineBreaks": "LF",
-  "validateQuoteMarks": "'",
+  "validateQuoteMarks": "\"",
   "validateIndentation": 2,
   "disallowMixedSpacesAndTabs": true,
   "disallowTrailingWhitespace": true,

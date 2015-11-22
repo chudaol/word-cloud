@@ -1,4 +1,6 @@
-// app.js
+"use strict";
+
+/*global require, module*/
 var DEFAULT_NUMBER_FONT_SIZES, DEFAULT_MIN_SIZE, COLORS, DEFAULT_FONT_STEP, _;
 
 DEFAULT_NUMBER_FONT_SIZES = 6;
@@ -57,11 +59,12 @@ module.exports = (function () {
       .value();
     min = _.first(volumes) || 1;
     max = _.last(volumes) || 10;
-    step = (max + 1 - min)/this.config.numberOfSizes;
+    step = (max + 1 - min) / this.config.numberOfSizes;
     map = [];
     _.times(this.config.numberOfSizes, _.bind(function (level) {
       map.push(this.createVolumeMapEntry(min, step, level));
     }, this));
+
     return map;
   };
   /**
@@ -76,7 +79,7 @@ module.exports = (function () {
       return volume >= entry.min && volume < entry.max;
     }) || {};
 
-    return volumeEntry.fontSize
+    return volumeEntry.fontSize;
   };
   /**
    *

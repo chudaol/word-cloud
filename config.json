@@ -1,6 +1,5 @@
 {
   "minFontSize": 10,
   "numberOfSizes": 6,
-  "topics": "topics.json",
-  "fontStep": 2
+  "topics": "topics.json"
 }

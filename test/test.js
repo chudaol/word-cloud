@@ -33,7 +33,7 @@ describe("word-cloud", function () {
       expect(wordCloud.createVolumeMapEntry(1, 2, 3)).to.eql({
         min: 7,
         max: 9,
-        fontSize: 16
+        fontSize: 40
       });
     });
   });
@@ -54,15 +54,14 @@ describe("word-cloud", function () {
       ];
 
       config = {
-        numberOfSizes: 3,
-        fontStep: 1
+        numberOfSizes: 3
       };
 
       wordCloud = new WordCloud(config, topics);
       expect(wordCloud.mapVolumeToSizes()).to.eql([
         {min: 1, max: 2, fontSize: 10},
-        {min: 2, max: 3, fontSize: 11},
-        {min: 3, max: 4, fontSize: 12}
+        {min: 2, max: 3, fontSize: 20},
+        {min: 3, max: 4, fontSize: 30}
       ]);
     });
 
@@ -70,8 +69,7 @@ describe("word-cloud", function () {
       topics = [];
 
       config = {
-        numberOfSizes: 3,
-        fontStep: 1
+        numberOfSizes: 3
       };
 
       wordCloud = new WordCloud(config, topics);

@@ -1,11 +1,10 @@
 "use strict";
 
 /*global require, module*/
-var DEFAULT_NUMBER_FONT_SIZES, DEFAULT_MIN_SIZE, COLORS, DEFAULT_FONT_STEP, _;
+var DEFAULT_NUMBER_FONT_SIZES, DEFAULT_MIN_SIZE, COLORS, _;
 
 DEFAULT_NUMBER_FONT_SIZES = 6;
 DEFAULT_MIN_SIZE = 10;
-DEFAULT_FONT_STEP = 2;
 COLORS = {
   GREEN: "green",
   RED: "red",
@@ -26,7 +25,6 @@ module.exports = (function () {
     this.topics = topics;
     this.config.minFontSize = this.config.minFontSize || DEFAULT_MIN_SIZE;
     this.config.numberOfSizes = this.config.numberOfSizes || DEFAULT_NUMBER_FONT_SIZES;
-    this.config.fontStep = this.config.fontStep || DEFAULT_FONT_STEP;
     this.volumeToSizes = this.mapVolumeToSizes();
   }
   /**
@@ -41,7 +39,7 @@ module.exports = (function () {
     return {
       min: (min + level * step),
       max: min + (level + 1) * step,
-      fontSize: this.config.minFontSize + level * this.config.fontStep
+      fontSize: this.config.minFontSize * (level + 1)
     };
   };
   /**

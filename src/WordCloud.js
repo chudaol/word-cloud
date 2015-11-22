@@ -47,7 +47,16 @@ module.exports = (function () {
   /**
    * Creates a map for the topics volumes to the font sizes
    *
-   * @returns {Array}
+   * @returns {Array} an array of object with min and max volume and corresponding fontSize, e.g.
+   * <pre>
+   *   [
+   *     {min: 1, max: 2, fontSize: 10},
+   *     {min: 2, max: 3, fontSize: 12},
+   *     {min: 3, max: 4, fontSize: 14}
+   *   ]
+   * </pre>
+   * It means that for topics with volume between 1 and 2 the font size will be 10,
+   * for topics with volume between 2 and 3 the font size will be 12, etc
    */
   WordCloud.prototype.mapVolumeToSizes = function () {
     var volumes, min, max, step, map;
@@ -68,8 +77,10 @@ module.exports = (function () {
     return map;
   };
   /**
+   * Calculates the font size for a given topic analyzing its volume
    *
-   * @param topic
+   * @param {Object} topic
+   * @returns {Number}
    */
   WordCloud.prototype.getFontSize = function (topic) {
     var volume, volumeEntry;
@@ -82,8 +93,10 @@ module.exports = (function () {
     return volumeEntry.fontSize;
   };
   /**
+   * Generates a class name for a given topic
    *
-   * @param topic
+   * @param {Object} topic
+   * @returns {String} red/green/gray
    */
   WordCloud.prototype.getClassName = function (topic) {
     var sentimentScore;
@@ -101,7 +114,9 @@ module.exports = (function () {
   };
   /**
    * Parses a given topic
-   * @param topic
+   *
+   * @param {Object} topic
+   * @returns {Object}
    */
   WordCloud.prototype.parseTopic = function (topic) {
     var json;
@@ -115,12 +130,16 @@ module.exports = (function () {
   };
   /**
    * Parses all the topics
+   *
+   * @returns {Array}
    */
   WordCloud.prototype.parse = function () {
     return _.map(this.topics, this.parseTopic, this);
   };
   /**
    * Returns a topic with the biggest volume
+   *
+   * @returns {Object|undefined}
    */
   WordCloud.prototype.getTheBiggest = function () {
     return _.last(_.sortBy(this.topics, "volume"));
